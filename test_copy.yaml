@@ -1,0 +1,8 @@
+- hosts: vm
+  become: yes
+
+  tasks:
+  - name: copy file from local host to remote host
+    copy:
+      src: index.html
+      dest: /home/dev2/dev/
