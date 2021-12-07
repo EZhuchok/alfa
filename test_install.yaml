@@ -1,0 +1,23 @@
+- hosts: vm
+  become: true
+
+  tasks:
+  - name: ping
+    ping:
+
+  - name: apt update
+    apt:
+      update_cache: yes
+  
+  - name: apt install "nginx" 
+    apt:
+      name: nginx
+      state: present
+
+  - name: copy file from local host to remote host
+    copy:
+      src: index.html
+      dest: /usr/share/nginx/html/
+  
+  - name: shell command 
+    shell: sudo ufw allow 'Nginx HTTP'
